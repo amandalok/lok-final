@@ -1,1 +1,18 @@
-{{yield}}
+<style>
+p{
+  font-size: 24pt;
+  margin-bottom: 0px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>
+
+<p>All Events</p>
+
+
+
+{{#liquid-if toggle use="toLeft"}}
+This is where all events will show.
+
+{{/liquid-if}}

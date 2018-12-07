@@ -1,0 +1,13 @@
+body, nav{
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color: rgb(32,32,32)
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  color: rgb(145,255,247);
+}

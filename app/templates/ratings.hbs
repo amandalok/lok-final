@@ -1,1 +1,29 @@
-{{outlet}}
+<style>
+
+#center{
+  margin-left: 15%;
+}
+
+</style>
+
+
+<div id="center">
+
+  <h1>All Riders</h1>
+  <hr>
+{{#each model as |post|}}
+
+Rate {{post.name}}:
+<StarRating @starRating={{post.starRating}} @onClick={{action "star" post}} />
+
+{{#if (eq post.starRating 1)}}
+  {{post.starRating}} car rating!
+  {{else}}
+  {{post.starRating}} cars rating!
+  {{/if}}
+
+
+
+{{/each}}
+
+</div>

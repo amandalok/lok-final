@@ -1,1 +1,43 @@
+<style>
+
+#body{
+  margin-left: 15%;
+}
+
+</style>
+
+<div id="body">
+
+
+
+  {{liquid-fire}}
+
+  {{#each model as |post|}}
+
+
+  <div id="card">
+    {{#link-to "post" post.id}}
+    <strong>{{post.name}}</strong> | Rating:
+    {{#if (eq post.starRating null)}}
+    --
+    {{/if}}
+    {{post.starRating}}
+    <br> Date: {{post.date}} <br> Location: {{post.location}}  <br>
+    {{/link-to}}
+
+
+    {{#link-to "edit" post.id}}
+    Edit
+    {{/link-to}}
+    <h1 data-test="event"></h1>
+    <h1 data-test="name"></h1>
+    <h1 data-test="date"></h1>
+    <h1 data-test="location"></h1>
+    <h1 data-test="contact"></h1>
+  </div>
+
+  <br>
+  {{/each}}
+
+</div>
 {{outlet}}

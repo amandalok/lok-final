@@ -1,5 +1,39 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<style>
+nav{
+  margin-left: 10px;
 
-{{outlet}}
+}
+</style>
+
+<img
+margin-top="10px"
+width="100px"
+height="100px"
+src="https://image.flaticon.com/icons/svg/1272/1272732.svg"
+alt="Carpool"
+>
+
+<nav>
+  <br>
+  {{#link-to "create"}}
+  New Event
+  {{/link-to}}
+
+
+
+  {{#link-to "index"}}
+  <br>All Events<br>
+  {{/link-to}}
+
+
+
+  {{#link-to "ratings"}}
+  Ratings <br>
+  {{/link-to}}
+
+  {{#link-to "faq" }}
+  FAQ <br>
+  {{/link-to}}
+</nav>
+
+{{liquid-outlet}}

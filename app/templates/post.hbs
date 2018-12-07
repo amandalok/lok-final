@@ -1,1 +1,39 @@
-{{outlet}}
+<style>
+  #body{
+  margin-left: 15%;
+
+}
+
+strong:hover{
+  color: rgb(145,255,247);
+}
+
+</style>
+
+<div id="body">
+
+  <button type="button" data-test="delete" onclick={{action "deleteEvent" model}}>
+    <img width= "20px" height= "20px"
+    src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png"
+    alt="Delete">
+  </button>
+
+  {{#link-to "index"}}
+    Back
+  {{/link-to}}
+
+
+  <h2>{{model.name}}</h2> is going to
+  <strong>
+    <a
+      href="http://maps.google.com/?q={{model.location}}"
+      target="_blank"
+      rel="noopener"
+      link-rel-noopener
+    >
+      {{model.location}}
+    </a>
+  </strong> on {{model.date}}. <br><br>Contact them at {{model.contact}} to coordinate plans.
+
+
+</div>
