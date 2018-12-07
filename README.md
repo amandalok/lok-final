@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/amandalok/lok-final.svg?branch=master)](https://travis-ci.org/amandalok/lok-final)
+
+
 # lok-final
 
 This README outlines the details of collaborating on this Ember application.

@@ -6,21 +6,14 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | star-rating', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('one star rating works', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{star-rating}}`);
+    await render(hbs`<StarRating @starRating={{1}} />
+`);
 
-    assert.equal(this.element.textContent.trim(), '');
 
-    // Template block usage:
-    await render(hbs`
-      {{#star-rating}}
-        template block text
-      {{/star-rating}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('[data-test="oneStar"]').exists({ count: 1});
   });
 });

@@ -1,26 +1,28 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
+
 
 module('Integration | Component | updating-button', function(hooks) {
   setupRenderingTest(hooks);
+    setupMirage(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{updating-button}}`);
+    test('update button', async function(assert) {
+    server.create('post', {
+      name: 'View event',
+      date: 'View event',
+      location: 'View event',
+      contact: 'View event',
 
-    assert.equal(this.element.textContent.trim(), '');
+    });
 
-    // Template block usage:
-    await render(hbs`
-      {{#updating-button}}
-        template block text
-      {{/updating-button}}
-    `);
+    await visit('/event/1/edit');
+    fillIn('#name', 'Edit Name');
+     await click('[data-test="update"]');
+    assert.equal('name', 'name');
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
-  });
+
+    });
 });

@@ -1,26 +1,24 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
+import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
+
 
 module('Integration | Component | saving-button', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test('saving button', async function(assert) {
 
-    await render(hbs`{{saving-button}}`);
+    await visit('/event/new');
+    await fillIn('#name', 'Name');
+    await fillIn('#date', 'Date');
+    await fillIn('#location', 'Location');
+    await fillIn('#contact', 'Contact');
 
-    assert.equal(this.element.textContent.trim(), '');
 
-    // Template block usage:
-    await render(hbs`
-      {{#saving-button}}
-        template block text
-      {{/saving-button}}
-    `);
+    await click('[data-test="save"]');
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+assert.equal(currentURL(), '/');
+assert.dom('[data-test="event"]').exists({ count: 1 });
   });
 });
